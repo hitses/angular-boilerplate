@@ -18,5 +18,5 @@ export const routes: Routes = [
     canActivate: [authCanActivateGuard],
     loadChildren: () => import('./main/main.routes').then((r) => r.mainRoutes),
   },
-  { path: '**', redirectTo: '' },
+  { path: '**', redirectTo: 'main' },
 ];

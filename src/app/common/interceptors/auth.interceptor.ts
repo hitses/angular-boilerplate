@@ -14,11 +14,18 @@ export const authInterceptor: HttpInterceptorFn = (
   req: HttpRequest<any>,
   next: HttpHandlerFn,
 ): Observable<HttpEvent<any>> => {
+  const skipUrls = [
+    'https://accounts.google.com/.well-known/openid-configuration',
+    'https://www.googleapis.com/oauth2/v3/certs',
+  ];
+
   const router = inject(Router);
   const injector = inject(Injector);
   const token = localStorage.getItem('token');
 
-  if (token)
+  const shouldSkip = skipUrls.some((url) => req.url.startsWith(url));
+
+  if (token && !shouldSkip)
     req = req.clone({
       setHeaders: { Authorization: `Bearer ${token}` },
     });
