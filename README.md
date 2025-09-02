@@ -1,4 +1,4 @@
-# Angular 20 Boilerplate with OAuth2, Tailwind & Prettier
+# Angular 20 Boilerplate with OAuth2
 
 This project is a starter template for building Angular 20 applications connected to a backend API.
 It includes a pre-configured authentication flow using Google OAuth 2.0, JWT token handling, and a secure route structure.
